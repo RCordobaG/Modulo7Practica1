@@ -10,7 +10,9 @@ import UIKit
 class NotesViewController: UIViewController {
     
     @IBOutlet var emptyNotesView: UIView!
-    @IBOutlet var noteList: UITableView!
+    @IBOutlet weak var noteList: UITableView!
+    @IBOutlet weak var addNoteButton: UIBarButtonItem!
+    
     
     let context = (UIApplication.shared .delegate as! AppDelegate).persistentContainer.viewContext
     var notesManager : NotesManager?
@@ -23,9 +25,7 @@ class NotesViewController: UIViewController {
         
         notesManager = NotesManager(context: context)
         notesManager?.fetch()
-        notesManager?.createNoteDB(id: UUID.init(), title: "Minnesota", body: "My dog is walking towards me please help he is trying to kill me and is speaking in perfect Latvian and walking on one leg", date: Date.init(), fontSize: 256, fontColor: "Green marvek")
-        noteObjectList = (notesManager?.getNotes())!
-        print("Notes objects: ",noteObjectList)
+
         if notesManager?.countNoteDB() == 0 {
             emptyNotesView.isHidden = false
             noteList.backgroundView = emptyNotesView
@@ -34,6 +34,29 @@ class NotesViewController: UIViewController {
             emptyNotesView.isHidden = true
         }
     }
+    
+    @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
+        
+        if noteList.isEditing{
+            noteList.setEditing(false, animated: true)
+            sender.title = "Edit"
+            addNoteButton.isEnabled = true
+        }
+        else{
+            noteList.setEditing(true, animated: true)
+            sender.title = "Done"
+            addNoteButton.isEnabled = false
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTaskSegue"{
+            let destination = segue.destination as! AddNoteViewController
+            destination.newNote = notesManager?.getNotes()[noteList.indexPathForSelectedRow!.row]
+        }
+    }
+
+    
 }
 
 // MARK: - Table view data source
@@ -41,6 +64,13 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
     //Get the total number of rows for the tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        if notesManager?.countNoteDB() == 0 {
+            emptyNotesView.isHidden = false
+            noteList.backgroundView = emptyNotesView
+        }
+        else {
+            emptyNotesView.isHidden = true
+        }
         return notesManager!.countNoteDB()
     }
     
@@ -53,12 +83,42 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
         return cell!
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showTaskSegue", sender: self)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            note = notesManager?.getNotes()[indexPath.row]
+            self.context.delete(note!)
+            
+            do{
+                try self.context.save()
+            }
+            catch let error {
+                print("Error: ", error)
+            }
+        }
+        notesManager?.fetch()
+        noteList.reloadData()
+    }
+    
     //Unwind segue
-    @IBAction func unwindToNotesViewController(_ segue : UIStoryboardSegue){
+    @IBAction func unwindToNotesViewController(segue : UIStoryboardSegue){
         //print("Unwind Segue!")
         let source = segue.source as! AddNoteViewController
         note = source.newNote
+        
+        do{
+            try context.save()
+        }
+        catch let error{
+            print("Error: ",error)
+        }
+        notesManager?.fetch()
         //reload table view
         noteList.reloadData()
     }
+    
+    
 }
