@@ -11,7 +11,7 @@ import UIKit
 class NoteCell: UITableViewCell {
 
     @IBOutlet weak var noteTitle: UILabel!
-    @IBOutlet weak var noteDate: UILabel!
+    @IBOutlet weak var noteBody: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

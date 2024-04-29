@@ -9,23 +9,41 @@
 /* Begin PBXBuildFile section */
 		5B3620FC2BDEE7AB008FD3BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3620FB2BDEE7AB008FD3BB /* AppDelegate.swift */; };
 		5B3620FE2BDEE7AB008FD3BB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3620FD2BDEE7AB008FD3BB /* SceneDelegate.swift */; };
-		5B3621002BDEE7AB008FD3BB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3620FF2BDEE7AB008FD3BB /* ViewController.swift */; };
-		5B3621032BDEE7AB008FD3BB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5B3621022BDEE7AB008FD3BB /* Base */; };
 		5B3621062BDEE7AB008FD3BB /* Notes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621042BDEE7AB008FD3BB /* Notes.xcdatamodeld */; };
 		5B3621082BDEE7AE008FD3BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5B3621072BDEE7AE008FD3BB /* Assets.xcassets */; };
 		5B36210B2BDEE7AE008FD3BB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 5B36210A2BDEE7AE008FD3BB /* Base */; };
+		5B3621142BDEE866008FD3BB /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621132BDEE866008FD3BB /* DateFormatter.swift */; };
+		5B3621162BDEE892008FD3BB /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621152BDEE892008FD3BB /* DateExtension.swift */; };
+		5B3621182BDEE8A1008FD3BB /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621172BDEE8A1008FD3BB /* ViewExtension.swift */; };
+		5B36211A2BDEE8CC008FD3BB /* CGColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621192BDEE8CC008FD3BB /* CGColorExtension.swift */; };
+		5B36211D2BDEE922008FD3BB /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36211C2BDEE922008FD3BB /* NoteCell.swift */; };
+		5B3621202BDEE950008FD3BB /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B36211F2BDEE950008FD3BB /* NotesViewController.swift */; };
+		5B3621222BDEE968008FD3BB /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621212BDEE968008FD3BB /* AddNoteViewController.swift */; };
+		5B3621282BDEE9DF008FD3BB /* NotesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B3621272BDEE9DF008FD3BB /* NotesManager.swift */; };
+		5BFCDF602BDF3E620090108E /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCDF5E2BDF3E620090108E /* Note+CoreDataClass.swift */; };
+		5BFCDF612BDF3E620090108E /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFCDF5F2BDF3E620090108E /* Note+CoreDataProperties.swift */; };
+		5BFCDF642BDF637B0090108E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5BFCDF622BDF637B0090108E /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5B3620F82BDEE7AB008FD3BB /* Notes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B3620FB2BDEE7AB008FD3BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5B3620FD2BDEE7AB008FD3BB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5B3620FF2BDEE7AB008FD3BB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5B3621022BDEE7AB008FD3BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5B3621052BDEE7AB008FD3BB /* Notes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Notes.xcdatamodel; sourceTree = "<group>"; };
 		5B3621072BDEE7AE008FD3BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5B36210A2BDEE7AE008FD3BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5B36210C2BDEE7AE008FD3BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5B3621132BDEE866008FD3BB /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		5B3621152BDEE892008FD3BB /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		5B3621172BDEE8A1008FD3BB /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		5B3621192BDEE8CC008FD3BB /* CGColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGColorExtension.swift; sourceTree = "<group>"; };
+		5B36211C2BDEE922008FD3BB /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
+		5B36211F2BDEE950008FD3BB /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		5B3621212BDEE968008FD3BB /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		5B3621272BDEE9DF008FD3BB /* NotesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesManager.swift; sourceTree = "<group>"; };
+		5BFCDF5E2BDF3E620090108E /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		5BFCDF5F2BDF3E620090108E /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5BFCDF632BDF637B0090108E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "../../../../Downloads/temp/ToDo-main/ToDo/Base.lproj/Main.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +76,57 @@
 		5B3620FA2BDEE7AB008FD3BB /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				5B3621242BDEE9A2008FD3BB /* View */,
+				5B36211E2BDEE93F008FD3BB /* Controller */,
+				5B36211B2BDEE8FC008FD3BB /* Model */,
+				5B3621122BDEE820008FD3BB /* Extensions */,
 				5B3620FB2BDEE7AB008FD3BB /* AppDelegate.swift */,
 				5B3620FD2BDEE7AB008FD3BB /* SceneDelegate.swift */,
-				5B3620FF2BDEE7AB008FD3BB /* ViewController.swift */,
-				5B3621012BDEE7AB008FD3BB /* Main.storyboard */,
+				5BFCDF622BDF637B0090108E /* Main.storyboard */,
 				5B3621072BDEE7AE008FD3BB /* Assets.xcassets */,
 				5B3621092BDEE7AE008FD3BB /* LaunchScreen.storyboard */,
 				5B36210C2BDEE7AE008FD3BB /* Info.plist */,
 				5B3621042BDEE7AB008FD3BB /* Notes.xcdatamodeld */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		5B3621122BDEE820008FD3BB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5B3621132BDEE866008FD3BB /* DateFormatter.swift */,
+				5B3621152BDEE892008FD3BB /* DateExtension.swift */,
+				5B3621172BDEE8A1008FD3BB /* ViewExtension.swift */,
+				5B3621192BDEE8CC008FD3BB /* CGColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5B36211B2BDEE8FC008FD3BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5BFCDF5E2BDF3E620090108E /* Note+CoreDataClass.swift */,
+				5BFCDF5F2BDF3E620090108E /* Note+CoreDataProperties.swift */,
+				5B3621272BDEE9DF008FD3BB /* NotesManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B36211E2BDEE93F008FD3BB /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5B36211F2BDEE950008FD3BB /* NotesViewController.swift */,
+				5B3621212BDEE968008FD3BB /* AddNoteViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		5B3621242BDEE9A2008FD3BB /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5B36211C2BDEE922008FD3BB /* NoteCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,7 +189,7 @@
 			files = (
 				5B3621082BDEE7AE008FD3BB /* Assets.xcassets in Resources */,
 				5B36210B2BDEE7AE008FD3BB /* Base in Resources */,
-				5B3621032BDEE7AB008FD3BB /* Base in Resources */,
+				5BFCDF642BDF637B0090108E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,30 +200,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B3621002BDEE7AB008FD3BB /* ViewController.swift in Sources */,
+				5B3621282BDEE9DF008FD3BB /* NotesManager.swift in Sources */,
+				5B3621222BDEE968008FD3BB /* AddNoteViewController.swift in Sources */,
+				5BFCDF602BDF3E620090108E /* Note+CoreDataClass.swift in Sources */,
+				5BFCDF612BDF3E620090108E /* Note+CoreDataProperties.swift in Sources */,
+				5B3621142BDEE866008FD3BB /* DateFormatter.swift in Sources */,
+				5B3621162BDEE892008FD3BB /* DateExtension.swift in Sources */,
+				5B3621182BDEE8A1008FD3BB /* ViewExtension.swift in Sources */,
 				5B3620FC2BDEE7AB008FD3BB /* AppDelegate.swift in Sources */,
 				5B3620FE2BDEE7AB008FD3BB /* SceneDelegate.swift in Sources */,
+				5B3621202BDEE950008FD3BB /* NotesViewController.swift in Sources */,
+				5B36211D2BDEE922008FD3BB /* NoteCell.swift in Sources */,
 				5B3621062BDEE7AB008FD3BB /* Notes.xcdatamodeld in Sources */,
+				5B36211A2BDEE8CC008FD3BB /* CGColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		5B3621012BDEE7AB008FD3BB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5B3621022BDEE7AB008FD3BB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5B3621092BDEE7AE008FD3BB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				5B36210A2BDEE7AE008FD3BB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		5BFCDF622BDF637B0090108E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5BFCDF632BDF637B0090108E /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -296,8 +364,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LCCA67G74J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Notes;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -310,9 +380,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cordoba.rodrigo.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -323,8 +397,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = LCCA67G74J;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Notes/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Notes;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -337,9 +413,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = cordoba.rodrigo.Notes;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

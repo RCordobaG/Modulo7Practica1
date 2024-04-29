@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import UIKit
+
+public extension CGColor {
+    var UIColor : UIKit.UIColor {
+        return UIKit.UIColor(cgColor: self)
+    }
+}
