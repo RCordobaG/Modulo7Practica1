@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AddNoteViewController: UITableViewController {
+class EditNoteViewController: UITableViewController {
     
     var newNote : Note?
     @IBOutlet weak var noteTitle: UITextField!
