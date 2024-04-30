@@ -28,7 +28,7 @@ class NotesViewController: UIViewController {
         super.viewDidLoad()
         
         notesManager = NotesManager(context: context)
-        notesManager?.fetch()
+        notesManager?.loadNotes()
 
         if notesManager?.countNotes() == 0 {
             emptyNotesView.isHidden = false
