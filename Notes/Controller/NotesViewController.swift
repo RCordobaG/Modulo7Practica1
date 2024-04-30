@@ -13,7 +13,6 @@ class NotesViewController: UIViewController {
     @IBOutlet weak var noteList: UITableView!
     @IBOutlet weak var addNoteButton: UIBarButtonItem!
     
-    
     let context = (UIApplication.shared .delegate as! AppDelegate).persistentContainer.viewContext
     var notesManager : NotesManager?
     var note : Note?
@@ -85,8 +84,8 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NoteCell
         cell?.noteTitle.text = noteJSONList[indexPath.row].title
         cell?.noteBody.text = noteJSONList[indexPath.row].body
-        //cell?.noteBody.text = noteJSONList[indexPath.row].date
-        //cell?.noteBody.text = noteJSONList[indexPath.row].body
+        cell?.noteDate.text = noteJSONList[indexPath.row].date.ISO8601Format()
+        cell?.notePriority.text = noteJSONList[indexPath.row].priority
         //cell?.noteBody.text = noteJSONList[indexPath.row].body
         return cell!
     }
@@ -114,12 +113,10 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
         noteJSON = source.newNoteJSON
         isEdit = source.isEditOp
         if (isEdit){
-            print("Dr Jr")
             notesManager?.updateNote(at: editIndex, note: noteJSON!)
             notesManager?.saveNotes()
         }
         else{
-            print("Honda Civic 2006")
             notesManager?.createNote(note: noteJSON!)
             notesManager?.saveNotes()
         }

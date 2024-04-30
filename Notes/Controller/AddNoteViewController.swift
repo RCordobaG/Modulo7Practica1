@@ -8,30 +8,40 @@
 import Foundation
 import UIKit
 
-class AddNoteViewController: UITableViewController {
+class AddNoteViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var newNote : Note?
     var newNoteJSON : NoteJSON?
     
+    var pickerData: [String] = [String]()
+    
     @IBOutlet weak var noteTitle: UITextField!
     
     @IBOutlet weak var datePicker: UIDatePicker!
     
     @IBOutlet weak var noteBody: UITextView!
+    @IBOutlet weak var noteDate: UIDatePicker!
     
+    @IBOutlet weak var notePriority: UIPickerView!
     var isEditOp : Bool = false
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerData = ["Baja","Media","Alta"]
 
         if newNoteJSON == nil{
             isEditOp = false
             noteTitle.text = ""
             noteBody.text = ""
-            newNoteJSON = NoteJSON(id: UUID.init(), title: "", body: "", date: Date.init(), fontColor: "", fontSize: 10)
+            newNoteJSON = NoteJSON(id: UUID.init(), title: "", body: "", date: Date.init(), priority: "")
         }
         else{
             isEditOp = true
@@ -63,8 +73,7 @@ class AddNoteViewController: UITableViewController {
         
         newNoteJSON?.title = noteTitle.text ?? ""
         newNoteJSON?.body = noteBody.text ?? ""
-        print("Note title: ", newNoteJSON?.title)
-        print("Note body: ", newNoteJSON?.body)
+        newNoteJSON?.date = noteDate.date
         destination.noteJSON = newNoteJSON
         destination.isEdit = isEditOp
         
@@ -83,4 +92,19 @@ class AddNoteViewController: UITableViewController {
             return true
         }
     }
+    
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+            return 1
+        }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+            return pickerData.count
+        }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+           return pickerData[row]
+       }
+     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+           newNoteJSON?.priority = pickerData[row]
+       }
 }

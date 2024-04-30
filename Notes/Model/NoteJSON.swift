@@ -12,6 +12,5 @@ struct NoteJSON : Codable{
     var title : String
     var body: String
     var date: Date
-    var fontColor: String
-    var fontSize: Int
+    var priority: String
 }
