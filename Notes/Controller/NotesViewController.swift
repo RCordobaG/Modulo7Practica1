@@ -17,8 +17,13 @@ class NotesViewController: UIViewController {
     let context = (UIApplication.shared .delegate as! AppDelegate).persistentContainer.viewContext
     var notesManager : NotesManager?
     var note : Note?
+    var noteJSON : NoteJSON?
     
     var noteObjectList : [Note] = []
+    var noteJSONList : [NoteJSON] = []
+    
+    var isEdit : Bool = false
+    var editIndex: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +31,7 @@ class NotesViewController: UIViewController {
         notesManager = NotesManager(context: context)
         notesManager?.fetch()
 
-        if notesManager?.countNoteDB() == 0 {
+        if notesManager?.countNotes() == 0 {
             emptyNotesView.isHidden = false
             noteList.backgroundView = emptyNotesView
         }
@@ -52,7 +57,7 @@ class NotesViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTaskSegue"{
             let destination = segue.destination as! AddNoteViewController
-            destination.newNote = notesManager?.getNotes()[noteList.indexPathForSelectedRow!.row]
+            destination.newNoteJSON = notesManager?.getNotes()[noteList.indexPathForSelectedRow!.row]
         }
     }
 
@@ -64,42 +69,41 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
     //Get the total number of rows for the tableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if notesManager?.countNoteDB() == 0 {
+        if notesManager?.countNotes() == 0 {
             emptyNotesView.isHidden = false
             noteList.backgroundView = emptyNotesView
         }
         else {
             emptyNotesView.isHidden = true
         }
-        return notesManager!.countNoteDB()
+        return notesManager!.countNotes()
     }
     
     //Set data source for each cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        noteObjectList = (notesManager?.getNotes())!
+        noteJSONList = (notesManager?.getNotes())!
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? NoteCell
-        cell?.noteTitle.text = noteObjectList[indexPath.row].title
-        cell?.noteBody.text = noteObjectList[indexPath.row].body
+        cell?.noteTitle.text = noteJSONList[indexPath.row].title
+        cell?.noteBody.text = noteJSONList[indexPath.row].body
+        //cell?.noteBody.text = noteJSONList[indexPath.row].date
+        //cell?.noteBody.text = noteJSONList[indexPath.row].body
+        //cell?.noteBody.text = noteJSONList[indexPath.row].body
         return cell!
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        editIndex = indexPath.row
         performSegue(withIdentifier: "showTaskSegue", sender: self)
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            note = notesManager?.getNotes()[indexPath.row]
-            self.context.delete(note!)
+            //noteJSON = notesManager?.getNotes()[indexPath.row]
+            notesManager?.deleteNote(at: indexPath.row)
             
-            do{
-                try self.context.save()
-            }
-            catch let error {
-                print("Error: ", error)
-            }
+            notesManager?.saveNotes()
         }
-        notesManager?.fetch()
+        notesManager?.loadNotes()
         noteList.reloadData()
     }
     
@@ -107,15 +111,22 @@ extension NotesViewController: UITableViewDelegate, UITableViewDataSource{
     @IBAction func unwindToNotesViewController(segue : UIStoryboardSegue){
         //print("Unwind Segue!")
         let source = segue.source as! AddNoteViewController
-        note = source.newNote
+        noteJSON = source.newNoteJSON
+        isEdit = source.isEditOp
+        if (isEdit){
+            print("Dr Jr")
+            notesManager?.updateNote(at: editIndex, note: noteJSON!)
+            notesManager?.saveNotes()
+        }
+        else{
+            print("Honda Civic 2006")
+            notesManager?.createNote(note: noteJSON!)
+            notesManager?.saveNotes()
+        }
         
-        do{
-            try context.save()
-        }
-        catch let error{
-            print("Error: ",error)
-        }
-        notesManager?.fetch()
+        
+
+        notesManager?.loadNotes()
         //reload table view
         noteList.reloadData()
     }

@@ -13,6 +13,7 @@ class AddNoteViewController: UITableViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var newNote : Note?
+    var newNoteJSON : NoteJSON?
     
     @IBOutlet weak var noteTitle: UITextField!
     
@@ -20,18 +21,22 @@ class AddNoteViewController: UITableViewController {
     
     @IBOutlet weak var noteBody: UITextView!
     
+    var isEditOp : Bool = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if newNote == nil{
+        if newNoteJSON == nil{
+            isEditOp = false
             noteTitle.text = ""
             noteBody.text = ""
-            newNote = Note(context: context)
+            newNoteJSON = NoteJSON(id: UUID.init(), title: "", body: "", date: Date.init(), fontColor: "", fontSize: 10)
         }
         else{
-            noteTitle.text = newNote?.title
-            noteBody.text = newNote?.body
+            isEditOp = true
+            noteTitle.text = newNoteJSON?.title
+            noteBody.text = newNoteJSON?.body
         }
         // Do any additional setup after loading the view.
     }
@@ -55,10 +60,14 @@ class AddNoteViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //newNote = Note(title: noteTitle.text ?? "", content: noteContent.text, date: Date())
         let destination = segue.destination as! NotesViewController
-        newNote?.title = noteTitle.text
-        newNote?.body = noteBody.text
         
-        destination.note = newNote
+        newNoteJSON?.title = noteTitle.text ?? ""
+        newNoteJSON?.body = noteBody.text ?? ""
+        print("Note title: ", newNoteJSON?.title)
+        print("Note body: ", newNoteJSON?.body)
+        destination.noteJSON = newNoteJSON
+        destination.isEdit = isEditOp
+        
     }
     
     

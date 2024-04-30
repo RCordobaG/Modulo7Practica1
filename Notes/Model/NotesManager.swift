@@ -11,6 +11,7 @@ import CoreData
 class NotesManager {
     
     private var noteList : [Note] = []
+    private var noteListFM : [NoteJSON] = []
     private var context : NSManagedObjectContext
     
     init(context : NSManagedObjectContext){
@@ -25,6 +26,7 @@ class NotesManager {
             print("Error: ", error)
         }
     }
+
     
     //CRUD: Create
     func createNoteDB(id: UUID, title: String, body: String, date: Date, fontSize : Int16, fontColor : String) -> Note?{
@@ -53,7 +55,7 @@ class NotesManager {
         return noteList.count
     }
     
-    func getNotes() -> [Note]{
+    func getNotesDB() -> [Note]{
         if let noteList = try? self.context.fetch(Note.fetchRequest()){
             return noteList
         }
@@ -112,33 +114,40 @@ class NotesManager {
         }
     }
     
-    /*
+    
     //JSON operations
-    func createNote(note : Note){
-        noteList.append(note)
+    func createNote(note : NoteJSON){
+        noteListFM.append(note)
         
     }
     
     func deleteNote(at index : Int) {
-        noteList.remove(at: index)
+        noteListFM.remove(at: index)
     }
     
-    func getNotes() -> [Note] {
-        return noteList
+    
+    func getNotes() -> [NoteJSON] {
+        return noteListFM
     }
     
-    func getNote(at index : Int) -> Note {
-        return noteList[index]
+    func getNote(at index : Int) -> NoteJSON {
+        return noteListFM[index]
     }
     
     func countNotes() -> Int {
-        return noteList.count
+        return noteListFM.count
+    }
+    
+    func updateNote(at index : Int, note : NoteJSON){
+        noteListFM[index] = note
     }
     
     func saveNotes()  {
         //save json file with created notes
         let fileManager = FileManager.default
         let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        print("DD: ", documentsDirectory)
+        
         //v1
         let notesURL = documentsDirectory.appendingPathComponent("notes.json")
         print("notesURL:", notesURL)
@@ -149,7 +158,7 @@ class NotesManager {
         
         //Save [Note] as json file
         do {
-            let jsonData = try JSONEncoder().encode(noteList)
+            let jsonData = try JSONEncoder().encode(noteListFM)
             fileManager.createFile(atPath: notesURL.path, contents: jsonData)
         }
         catch let error {
@@ -169,16 +178,16 @@ class NotesManager {
             do {
                 let jsonData = fileManager.contents(atPath: notesURL.path)
                 //Decode json file into array
-                noteList = try JSONDecoder().decode([Note].self, from: jsonData!)
+                noteListFM = try JSONDecoder().decode([NoteJSON].self, from: jsonData!)
             }
             catch let error {
                 print("error: ", error)
             }
         }
         else {
-            print("No se localizó el archivo")
+            print("Could not load file")
         }
         
     }
-     */
+     
 }
